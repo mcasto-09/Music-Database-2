@@ -1,15 +1,14 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-
+import { Link } from "react-router-dom";
+import musicRouter from "../server/routes/music.routes";
 
 function App() {
 
 
   return (
     <div className="bg-gradient-to-b from-yellow-200 via-65% via-sky-200 to-white " >
-      <div className="font-display flex justify-between p-3 text-xl bg-white">
-        <p NavLink to="/music">Discover</p>
-        <p>Login | Create Account</p>
+      <div className="font-display p-2 text-xl bg-white">
+        <p Link to="allMusic">Discover</p>
       </div>
       <div className='font-display text-center pt-60 text-4xl pb-4'>
         <h1>The Music Database </h1>
