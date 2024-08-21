@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
 import App from "./App";
-import AllMusic from './AllMusic'
+import AllMusic from './Homepage'
 import Information from "./Information";
 import Home from "./Home";
 

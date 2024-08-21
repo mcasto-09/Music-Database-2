@@ -21,8 +21,10 @@ app.get("/favorite-song", (req, res) => {
   res.send("Hello Vite + React!"); //send from api to send to front end
 });
 
-ViteExpress.listen(app, 8000, () =>
-  console.log("Server is listening on http://localhost:8000"),
-);
 
 app.use('/music', musicRouter)
+
+ViteExpress.listen(app, port, () =>
+  console.log(`Server is listening on http://localhost:${port}`),
+);
+
