@@ -1,20 +1,41 @@
 import axios from "axios"
-import React from "react"
-import musicRouter from "../server/routes/music.routes"
+import React, { useEffect, useState } from "react"
+
 
 function Information () {
-    axios.get (
-            `https://api.discogs.com/songs`
-        )
-        .then((response) => {
-            const posts = response.data
-            this.setState({posts});
+    const [allSongData, setAllSongData] = useState([])
+    const getAllSongs = () => {
+        axios.get('/api/music/songs').then(res => {
+            setAllSongData(res.data)
         })
-        
+        console.log(allSongData)
+    }
+
+    useEffect(() => {
+        getAllSongs()
+    }, [])
+
 
     return (
-        <div className="h-screen bg-blue-300"> Information Component</div>
+        <section>
+        <div className="h-screen bg-white">
+        {allSongData.map((song, i) => (
+            <p key={i}>{song}</p>
+        ))}
+        </div>
+        </section>
     )
 }
 
 export default Information 
+
+
+    // axios.get (
+    //         `/api/music/songs`
+            
+    //     )
+    //     .then((response) => {
+    //         const posts = response.data
+    //         setIndex0 (posts)
+    //     })
+    //     console.log(index0)

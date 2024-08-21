@@ -12,8 +12,8 @@ musicRouter.get('/songs', async (req, res) => {
             params: {
                 type: 'release',
                 token: apiToken,
-                per_page: 50,
-                page: 1
+                per_page: 10,
+                page: 10
             }
         });
 
