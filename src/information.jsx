@@ -2,6 +2,7 @@ import axios from "axios"
 import React, { useEffect, useState } from "react"
 
 
+
 function Information () {
     const [allSongData, setAllSongData] = useState([])
     const getAllSongs = () => {
@@ -19,16 +20,24 @@ function Information () {
     return (
         <section>
         <div className="h-screen bg-white">
-        {allSongData.map((song, i) => (
-            <p key={i}>{song}</p>
-        ))}
+        {allSongData.map((song, i) => {
+            if (i > 10) {
+                console.log(song)
+                return
+            }
+            return (
+            <div key = {i}>
+                <p>{song.track}</p>
+                <p>{song.artist}</p>
+            </div>
+            )
+        })}
         </div>
         </section>
     )
 }
 
 export default Information 
-
 
     // axios.get (
     //         `/api/music/songs`

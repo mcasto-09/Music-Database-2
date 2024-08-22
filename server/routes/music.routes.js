@@ -12,20 +12,27 @@ musicRouter.get('/songs', async (req, res) => {
             params: {
                 type: 'release',
                 token: apiToken,
-                per_page: 10,
-                page: 10
+                page: 1,
+                per_page: 10
             }
         });
+        
 
         const releases = musicResponse.data.results;
         const songs = [];
 
-        for (const release of releases) {
+        for ( let i = 0; i < 10; i++  ) {
+            const release = releases[i]
             const releaseDetails = await axios.get(release.resource_url, {
                 params: { token: apiToken }
             });
+            console.log(releaseDetails.data)
             const tracklist = releaseDetails.data.tracklist;
-            songs.push(...tracklist.map(track => track.title));
+            songs.push(...tracklist.map(track => {
+                
+                return {track:track.title, images:track.images, artist:track.name}
+                
+            }));
         }
 
         res.json(songs);
