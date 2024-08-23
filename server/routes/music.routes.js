@@ -6,7 +6,7 @@ const musicRouter = Router();
 const apiToken = '3303cf4f3f1340d09fc972b6b6c41604';
 
 musicRouter.get('/artist', async (req, res) => {
-
+        
 })
 
 export default musicRouter
