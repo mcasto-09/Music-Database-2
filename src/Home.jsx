@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+//this is shit but its needed to work so keep it or this thing will explode.
 
-function Home() {
+function AllMusic() {
 
 
   return (
@@ -10,10 +11,17 @@ function Home() {
         <h1>The Music Database </h1>
       </div>
       <div className="flex justify-center font-display text-center text-lg border-solid border-2 w-[25rem] mx-auto bg-gradient-to-r from bg-yellow-200 to-blue-300" >
-      <input className="w-full" type="text" placeholder="search..." name="search"></input>
-    </div> 
+        <input className="w-full" type="text" placeholder="search..." name="search"></input>
+      </div>
+      <div>
+        <img
+          className="h-full w-full object-cover object-bottom" 
+          src="./images/music border.png"
+          alt="music notes"
+        />
+      </div>
     </div>
   );
 }
 
-export default Home;
+export default AllMusic;

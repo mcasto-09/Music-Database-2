@@ -9,7 +9,7 @@ function Information () {
         axios.get('/api/music/songs').then(res => {
             setAllSongData(res.data)
         })
-        console.log(allSongData)
+        // console.log(allSongData)
     }
 
     useEffect(() => {
@@ -22,13 +22,13 @@ function Information () {
         <div className="h-screen bg-white">
         {allSongData.map((song, i) => {
             if (i > 10) {
-                console.log(song)
+                // console.log(song)
                 return
             }
             return (
             <div key = {i}>
                 <p>{song.track}</p>
-                <p>{song.artist}</p>
+                <p>{song.artrtist}</p>
             </div>
             )
         })}
