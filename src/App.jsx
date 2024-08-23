@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="bg-white" >
-    <header className="flexbox justify-between">
+    <header className="flex justify-center space-x-96  pt-2 pb-2 text-lg">
     <Link to="/information">
           <p>Discover</p>
     </Link>

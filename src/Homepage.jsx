@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import {FaSearch} from "react-icons/fa"
 
 function AllMusic() {
 
@@ -12,9 +12,10 @@ function AllMusic() {
       </div>
       <div className="flex justify-center font-display text-center text-lg border-solid border-2 w-[25rem] mx-auto bg-gradient-to-r from-yellow-200 to-blue-300">
         <input className="w-full" type="text" placeholder="search..." name="search" />
+        <FaSearch />
       </div>
       <img
-        className="h-96 w-full object-cover object-bottom"
+        className="h-96 w-full object-cover object-bottom pt-20"
         src="./images/music border.png"
         alt="music notes"
       />

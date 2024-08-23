@@ -1,43 +1,57 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 
+function Information (){
 
 
-function Information () {
-    const [allSongData, setAllSongData] = useState([])
-    const getAllSongs = () => {
-        axios.get('/api/music/songs').then(res => {
-            setAllSongData(res.data)
-        })
-        // console.log(allSongData)
-    }
 
-    useEffect(() => {
-        getAllSongs()
-    }, [])
-
-
-    return (
-        <section>
-        <div className="h-screen bg-white">
-        {allSongData.map((song, i) => {
-            if (i > 10) {
-                // console.log(song)
-                return
-            }
-            return (
-            <div key = {i}>
-                <p>{song.track}</p>
-                <p>{song.artrtist}</p>
-            </div>
-            )
-        })}
-        </div>
-        </section>
-    )
 }
 
-export default Information 
+export default Information
+
+
+
+
+
+
+
+
+// function Information () {
+//     const [allArtistData, setAllArtistData] = useState([])
+//     const getAllArtist = () => {
+//         axios.get('/api/artists').then(res => {
+//             setAllArtistData(res.data)
+//         })
+//         console.log(allArtistData)
+//     }
+
+//     useEffect(() => {
+//         getAllArtist()
+//     }, [])
+
+
+//     return (
+//         <section>
+//         <div className="h-screen bg-white" >
+//         {allArtistData.map((artist, i) => {
+//             if (i > 10) {
+//                 // console.log(song)
+//                 return
+//             }
+
+//             return (
+//             <div className="pt-2 pl-20" key = {i}>
+//                 <p>{artist},</p>
+                
+//             </div>
+//             )
+//         })}
+//         </div>
+//         </section>
+//     )
+// }
+
+// export default Information 
 
     // axios.get (
     //         `/api/music/songs`
