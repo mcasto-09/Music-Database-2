@@ -53,7 +53,7 @@ function AllMusic() {
         .then((response) => response.json())
         .then((data) => {
           setAlbums(data.items.map(album => ({ ...album, likes: 0, dislikes: 0 })));
-          console.log(data);
+          console.log(data); //put up to here in javascript, have it create a new album into the db
         })
         .catch((error) => console.error("Error fetching albums:", error));
     }
@@ -110,7 +110,7 @@ function AllMusic() {
             ))}
           </ul>
         ) : (
-          <p className="text-center text-2xl">No albums found.</p>
+          <p className="text-center text-2xl">Search Artists</p>
         )}
       </div>
     </div>

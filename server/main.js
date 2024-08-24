@@ -6,15 +6,16 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 // import Album from '../models/AlbumDb.js';
 import config from '../config/config.json' with {type: 'json'}
+import { AlbumDb } from './models/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // const configPath = path.join(__dirname, '../config/config.json');
 
-const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
 
 const app = express();
-const port = config.development.port || 8000;
+const port = config.development.port || 8001;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));

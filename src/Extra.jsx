@@ -73,7 +73,10 @@ function Extra() {
             <br></br>
             [Outro]
             Bem, bem!
+            <br></br>
+            I promise i can develop for the most part
         </p>
+        
     );
 }
 
