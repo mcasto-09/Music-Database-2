@@ -1,12 +1,11 @@
 'use strict';
 import {Model, DataTypes, Sequelize} from 'sequelize';
-import { sequelize } from '.';
+import { sequelize } from '../config/config.json'
 
 
 export default (sequelize, DataTypes) => {
   class AlbumDb extends Model {
     static associate(models) {
-      // define association here
     }
   }
 
