@@ -47,14 +47,13 @@ function AllMusic() {
     if (artistId) {
       console.log("Artist ID = " + artistId);
 
-      // Fetch the albums and update the state
       let albumsReturn = await fetch(
-        "https://api.spotify.com/v1/artists/" + artistId + "/albums?include_groups=album&market=US&limit=20",
+        "https://api.spotify.com/v1/artists/" + artistId + "/albums?include_groups=album,single&market=US&limit=20",
         searchParam
       )
         .then((response) => response.json())
         .then((data) => {
-          setAlbums(data.items); // Set the albums state with the returned data
+          setAlbums(data.items);
           console.log(data);
         })
         .catch((error) => console.error("Error fetching albums:", error));
@@ -88,7 +87,7 @@ function AllMusic() {
             ))}
           </ul>
         ) : (
-          <p>No albums found.</p>
+          <p className="flex justify-center">No albums found.</p>
         )}
       </div>
     </div>

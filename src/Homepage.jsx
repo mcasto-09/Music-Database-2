@@ -47,9 +47,10 @@ function AllMusic() {
     if (artistId) {
       console.log("Artist ID = " + artistId);
 
-      
       let albumsReturn = await fetch(
-        "https://api.spotify.com/v1/artists/" + artistId + "/albums,singles?include_groups=album&market=US&limit=20", searchParam)
+        "https://api.spotify.com/v1/artists/" + artistId + "/albums?include_groups=album,single&market=US&limit=20",
+        searchParam
+      )
         .then((response) => response.json())
         .then((data) => {
           setAlbums(data.items);
@@ -58,7 +59,7 @@ function AllMusic() {
         .catch((error) => console.error("Error fetching albums:", error));
     }
   }
-  
+
   console.log(albums);
   return (
     <div className="bg-gradient-to-b from-yellow-200 via-65% via-sky-200 to-white">
