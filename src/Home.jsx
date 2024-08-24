@@ -47,7 +47,7 @@ function AllMusic() {
       console.log("Artist ID = " + artistId);
 
       let albumsReturn = await fetch(
-        "https://api.spotify.com/v1/artists/" + artistId + "/albums?include_groups=album,single&market=US&limit=20",
+        "https://api.spotify.com/v1/artists/" + artistId + "/albums?include_groups=album,single&market=US&limit=50",
         searchParam
       )
         .then((response) => response.json())
@@ -58,17 +58,22 @@ function AllMusic() {
         .catch((error) => console.error("Error fetching albums:", error));
     }
   }
-
-  const handleLike = (index) => {
-    const newAlbums = [...albums];
-    newAlbums[index].likes += 1;
-    setAlbums(newAlbums);
+  const handleLike = (id) => {
+    fetch(`http://localhost:8000/albums/${id}/like`, { method: "POST" })
+      .then((response) => response.json())
+      .then((updatedAlbum) => {
+        setAlbums(albums.map(album => album.id === id ? updatedAlbum : album));
+      })
+      .catch((error) => console.error("Error liking album:", error));
   };
 
-  const handleDislike = (index) => {
-    const newAlbums = [...albums];
-    newAlbums[index].dislikes += 1;
-    setAlbums(newAlbums);
+  const handleDislike = (id) => {
+    fetch(`http://localhost:8000/albums/${id}/dislike`, { method: "POST" })
+      .then((response) => response.json())
+      .then((updatedAlbum) => {
+        setAlbums(albums.map(album => album.id === id ? updatedAlbum : album));
+      })
+      .catch((error) => console.error("Error disliking album:", error));
   };
 
   return (
