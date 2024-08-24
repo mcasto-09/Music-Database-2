@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
 
 const clientId = "16c1c7c9d87e492f8cf8157434888f45";
 const clientSecret = "5f69798fd8d04affa00c37f3aa0e0e22";
@@ -53,21 +52,32 @@ function AllMusic() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setAlbums(data.items);
+          setAlbums(data.items.map(album => ({ ...album, likes: 0, dislikes: 0 })));
           console.log(data);
         })
         .catch((error) => console.error("Error fetching albums:", error));
     }
   }
 
-  console.log(albums);
+  const handleLike = (index) => {
+    const newAlbums = [...albums];
+    newAlbums[index].likes += 1;
+    setAlbums(newAlbums);
+  };
+
+  const handleDislike = (index) => {
+    const newAlbums = [...albums];
+    newAlbums[index].dislikes += 1;
+    setAlbums(newAlbums);
+  };
+
   return (
     <div className="bg-gradient-to-b from-yellow-200 via-65% via-sky-200 to-white">
-      <img className="h-30 w-full object-cover object-bottom pb-12" src="./images/music border.png" alt="music notes" />
-      <div className="font-display text-center text-4xl pb-4 mt-10">
+      <img className=" object-cover object-bottom pb-12" src="./images/music border.png" alt="music notes" />
+      <div className="font-display text-center text-5xl pb-2 mt-10">
         <h1>The Music Database</h1>
       </div>
-      <div className="flex justify-center font-display text-center text-lg border-solid border-2 w-[25rem] mx-auto ">
+      <div className="flex justify-center font-display text-center text-3xl border-solid border-2 w-[25rem] mx-auto ">
         <input
           placeholder="search"
           type="input"
@@ -82,12 +92,20 @@ function AllMusic() {
       <div className="mt-10">
         {albums.length > 0 ? (
           <ul>
-            {albums.map((album) => (
-              <li key={album.id}>{album.name}</li>
+            {albums.map((album, index) => (
+              <li key={album.id} className="mb-4 text-center text-2xl">
+                <p>{album.name}</p>
+                <button onClick={() => handleLike(index)} className="mr-2 bg-green-200 p-1 rounded">
+                  Like ({album.likes})
+                </button>
+                <button onClick={() => handleDislike(index)} className="bg-red-200 p-1 rounded">
+                  Dislike ({album.dislikes})
+                </button>
+              </li>
             ))}
           </ul>
         ) : (
-          <p className="flex justify-center">No albums found.</p>
+          <p className="text-center text-2xl">No albums found.</p>
         )}
       </div>
     </div>

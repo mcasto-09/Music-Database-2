@@ -3,17 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
 import App from "./App";
-import AllMusic from './Homepage'
-import Information from "./Information";
 import Home from "./Home";
-import Homepage from "./Homepage"
+import Extra from "./Extra";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='/information' element={<Information/>} />
-      <Route path='/home' element={<Homepage/>} />
+      <Route path='/extra' element={<Extra/>} />
+      <Route path='/home' element={<Home/>} />
     </Route>
   )
 )

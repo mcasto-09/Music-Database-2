@@ -1,15 +1,14 @@
 import express from "express";
 import ViteExpress from "vite-express";
 import session from 'express-session';
-import appRouter from "./routes/index.js";
-import musicRouter from "./routes/music.routes.js";
+// import appRouter from "./routes/index.js";
 
 const app = express();
 const port = '8000';
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-app.use(appRouter);
+// app.use(appRouter);
 app.use(session({
   secret: 'shh',
   saveUninitialized: true,
@@ -17,8 +16,8 @@ app.use(session({
 }));
 
 
-// Use the music router for music-related routes
-app.use('/music', musicRouter);
+// // Use the music router for music-related routes
+// app.use('/music', musicRouter);
 
 
 ViteExpress.listen(app, port, () =>
